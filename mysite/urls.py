@@ -16,8 +16,11 @@ Including another URLconf
 # from django.urls import include, path
 from django.conf.urls import include, url
 from django.contrib import admin
+from traderlife import views
 
 urlpatterns = [
     url(r'^traderlife/', include('traderlife.urls')),
+    url(r'^hub/', include('hub.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^$', views.home, name='home'), # home页面
 ]

@@ -1,0 +1,84 @@
+/*通用*/
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-family: "Roboto","Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
+    color: #333;
+    background: #fff;
+}
+/*切换的页面*/
+div.layer{
+    display: none;
+}
+/*激活的切换的页面*/
+div.layer.active{
+    display: block;
+}
+/*表格*/
+table{
+    width:100%;
+    border-color: #acacac;
+    border-collapse: collapse;
+}
+table>tbody>tr>th {
+    vertical-align: bottom;
+    /*border-bottom: 2px solid #ddd;*/
+    background: #eeeeee;
+}
+table td {
+    padding-left: 10px;
+}
+/*显示在屏幕中央*/
+.centerScreen{
+    animation: loading 2s;
+    animation-iteration-count: infinite;
+    margin: auto;
+    width: 300px;
+}
+/*动画效果*/
+@keyframes loading {
+    0% {color: black}
+    50% {color: white}
+    100% {color: black}
+
+}
+/*导航*/
+.nav_top{
+    background-color: #222;
+    border-color: #080808;
+    top: 0;
+    border-width: 0 0 1px;
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    min-height: 50px;
+    margin-bottom: 20px;
+}
+/*导航的字*/
+.nav_top a {
+    color: #acacac;
+    text-decoration : none;
+    font-size: 18px;
+    margin:10px;
+    display: block;
+    line-height: 30px;
+    float: left;
+}
+/*激活的导航链接*/
+.nav_top a.active{
+    color: white;
+    text-decoration : none;
+}
+.container{
+    width: 1070px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#container{
+    margin-top: 30px;
+}
+.nav{
+    margin-left: -15px;
+}

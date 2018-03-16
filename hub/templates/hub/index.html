@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load staticfiles %}
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.js"></script>
+    <script src="{% static 'hub/common.js' %}"></script>
+    <link href="{% static 'hub/common.css' %}" rel="stylesheet"></link>
+    <title>Hive</title>
+</head>
+
+<body>
+<div class="container">
+<div class="nav_top">
+    <div id="nav" class="container">
+        <div class="nav">
+        <a href="#" id="testurls_tab" class="active">测试地址</a>
+        <a href="#" id="produrls_tab" class="">生产地址</a>
+        <a href="#" id="phone_tab" class="">改手机号</a>
+        </div>
+    </div>
+</div>
+<div id="container">
+    <div id="testurl_layer" class="layer active">
+        <h3>测试地址</h3>
+        <p>各项目测试环境地址</p>
+        <table id="test_table">
+            <tr><th>#</th><th>名称</th><th>地址</th><th>更新时间</th></tr>
+        </table>
+    </div>
+    <div id="produrl_layer" class="layer">
+        <h3>生产地址</h3>
+        <p>生产环境地址账号等</p>
+        <table id="prod_table">
+            <tr><th>#</th><th>名称</th><th>地址</th><th>更新时间</th></tr>
+        </table>
+    </div>
+    <div id="phone_layer" class="layer">
+        <h3>手机号绑定</h3>
+        <p>免验证码修改绑定的手机号</p>
+        <h4>生产环境</h4>
+        <div id="prod_updatephone">
+            {% csrf_token %}
+            <input class="org_phone" type="text" placeholder="输入账号">
+            <input class="id_password" type="password" placeholder="登录密码">
+            <input class="new_phone" type="text" placeholder="绑定手机号码">
+            <button class="update_phone_btn">确定</button>
+        </div>
+        <h4>测试环境</h4>
+            <p>测试环境用python脚本修改(python3)</p>
+        <a href="download/pyscript/bindphone">下载</a>
+    </div>
+</div>
+</div>
+</body>
+
+</html>

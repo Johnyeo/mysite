@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load staticfiles %}
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.js"></script>
+    <script src="{% static 'traderlife/common.js' %}"></script>
+    <link href="{% static 'traderlife/common.css' %}" rel="stylesheet"></link>
+    <title>my projects</title>
+</head>
+
+<body>
+<div class="container">
+    <div>
+        <span style="display:inline-block;">
+        <img src="{% static 'traderlife/img/homepage_welcome.png' %}"></span>
+        <span style="display: inline-block;"><ul>
+            <a href="{% url 'traderlife:index' %}"><li><h4>traderlife</h4></li></a>
+            <a href="{% url 'hub:index' %}"> <li><h4>hub</h4></li></a>
+        </ul></span>
+    </div>
+
+</div>
+</body>
+
+</html>
