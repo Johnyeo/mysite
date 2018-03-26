@@ -28,7 +28,7 @@ SECRET_KEY = '$l4$ragte1jf_hu_yh%ov6i5^47mh*@j76&6@nz4btdvyo_fyr'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*.zhangyao.info','198.199.103.238','127.0.0.1']
+ALLOWED_HOSTS = ['*.zhangyao.info','198.199.103.228','127.0.0.1']
 
 
 # Application definition
@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'traderlife.apps.TraderlifeConfig',
+    'hub.apps.HubConfig',
+    'bootstrap3',
+    'tempformat',
 ]
 
 MIDDLEWARE = [
