@@ -9,17 +9,18 @@
     <title>my projects</title>
 </head>
 
-<body>
+<body class="background">
+<div class="nav"></div>
 <div class="container">
     <div>
-        <span style="display:inline-block;">
-        <img src="{% static 'traderlife/img/homepage_welcome.png' %}"></span>
-        <span style="display: inline-block;"><ul>
-            <a href="{% url 'traderlife:index' %}"><li><h4>traderlife</h4></li></a>
-            <a href="{% url 'hub:index' %}"> <li><h4>hub</h4></li></a>
-        </ul></span>
+        <img style="display: inline" width="80px" height="80px" src="{% static 'traderlife/img/homepage_welcome.png' %}">
+        <h3 class="header">My Projects</h3>
     </div>
 
+        <ul class="menulist">
+            <a href="{% url 'traderlife:index' %}"><li><h4>traderlife</h4></li></a>
+            <a href="{% url 'hub:index' %}"> <li><h4>hub</h4></li></a>
+        </ul>
 </div>
 </body>
 

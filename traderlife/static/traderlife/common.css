@@ -1,3 +1,26 @@
+.background {
+    background-color: white;
+}
+.navi {
+
+}
+
+.header {
+
+}
+
+.navi.button {
+    color: white;
+}
+
 .container {
-    background-color: cadetblue;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1000px;
+}
+
+.menulist {
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
 }

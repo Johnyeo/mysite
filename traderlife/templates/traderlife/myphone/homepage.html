@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <title>welcome to tradecenter</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.js"></script>
+    <
+    <script src="{% static 'traderlife/js/myphone.js' %}"></script>
+    <link href="{% static 'traderlife/css/myphone.css' %}" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!--{% load bootstrap3 %}-->
+    <!--{% bootstrap_css %}-->
+    <!--{% bootstrap_javascript %}-->
+    {% load kmgformat %}
+    <!--<script>-->
+    <!--$.ajaxSetup({-->
+    <!--data: {csrfmiddlewaretoken: '{{ csrf_token }}'},-->
+    <!--});-->
+    <!--</script>-->
+
+</head>
+
+<body role='document'
+      style="background-color: #1f9d55; background: url({% static 'traderlife/img/myphone/myphonebackgroundpic.png' %})">
+<div class="alert alert-warning alert-dismissible navbar-fixed-top" role="alert"
+     style="margin-top: 51px;display: none;" id="warnMessage">
+    <button type="button" class="close" aria-label="Close"><span
+            aria-hidden="true" id="warnMessage_close">&times;</span></button>
+    <p id="message_content"></p>
+</div>
+
+<div id="myphone_homepage" class="container" role="main">
+    <table class="">
+        <tr>
+            <td><a href="/"><img alt="gallary" width="45px" height="45px"
+                                 src="{% static 'traderlife/img/myphone/gallary.png' %}"></a></td>
+            <td><a href="/"><img alt="gallary" width="45px" height="45px"
+                                 src="{% static 'traderlife/img/myphone/gallary.png' %}"></a></td>
+            <td><a href="/"><img alt="gallary" width="45px" height="45px"
+                                 src="{% static 'traderlife/img/myphone/gallary.png' %}"></a></td>
+            <td><a href="/"><img alt="gallary" width="45px" height="45px"
+                                 src="{% static 'traderlife/img/myphone/gallary.png' %}"></a></td>
+        </tr>
+        <tr>
+            <td><a href="/"><img alt="gallary" width="45px" height="45px"
+                                 src="{% static 'traderlife/img/myphone/gallary.png' %}"></a></td>
+            <td><a href="/"><img alt="gallary" width="45px" height="45px"
+                                 src="{% static 'traderlife/img/myphone/gallary.png' %}"></a></td>
+        </tr>
+
+
+    </table>
+</div>
+
+
+<div id="dock" style="background-color: transparent;">
+
+    <div style="">
+        <ul>
+            <li>
+                <div class="red-dot"></div>
+                <a href="myphone/about"><img src={% static "traderlife/img/myphone/phone.png" %} alt="phone"
+                                             width="45px" height="45px"></a></li>
+            <li>
+                <div class="red-dot"></div>
+                <a href="myphone/about"><img src="{% static 'traderlife/img/myphone/contacts.png' %}" alt="email"
+                                             width="45px" height="45px"></a></li>
+            <li><a href="myphone/message"><img src="{% static 'traderlife/img/myphone/email.png' %}" alt="message"
+                                               width="45px" height="45px"></a></li>
+            <li><a href="myphone/news"><img src="{% static 'traderlife/img/myphone/message.PNG' %}" alt="safari"
+                                            width="45px" height="45px"></a></li>
+        </ul>
+    </div>
+    <div style="position:relative; z-index: -1;background-color: #dddddd; height:100px;opacity: 0.5">
+
+    </div>
+</div>
+
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <title>welcome to tradecenter</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.js"></script>
+    <script src="{% static 'traderlife/js/gamepage.js' %}"></script>
+    <link href="{% static 'traderlife/css/gamepage.css' %}" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!--{% load bootstrap3 %}-->
+    <!--{% bootstrap_css %}-->
+    <!--{% bootstrap_javascript %}-->
+    {% load kmgformat %}
+
+    <!--<script>-->
+    <!--$.ajaxSetup({-->
+    <!--data: {csrfmiddlewaretoken: '{{ csrf_token }}'},-->
+    <!--});-->
+    <!--</script>-->
+
+    <style type="text/css"></style>
+
+</head>
+<body role='document' style="overflow-x:hidden; background: url({% static 'traderlife/img/trader_bg2.png' %});">
+
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="gamepage">TRADERLIFE</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">市场</a></li>
+                <li><a href="/guest_manage/">个人</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">{{user}}</a></li>
+                <li><a href="logout">退出</a></li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="alert alert-warning alert-dismissible navbar-fixed-top" role="alert"
+     style="margin-top: 51px;display: none;" id="warnMessage">
+    <button type="button" class="close" aria-label="Close"><span
+            aria-hidden="true" id="warnMessage_close">&times;</span></button>
+    <p id="message_content"></p>
+</div>
+
+<div class="container" role="main" style="margin-top: 40px; ">
+    <div class="page-header"><h2>市场</h2></div>
+
+    <div>
+
+        <div class="col-md-6">
+            <table class="table ">
+                <tbody>
+                <!--显示三排，每排一层循环，两层if判断-->
+                <!--循环数据库里，所有的市场产品。
+                <!--根据排判断，显示(0,5)的图，(5,10)的图，(10,15)的图-->
+                <!--判断数据库中，是否是有效的产品（1），如果不是1，则显示一个默认图片-->
+                <tr>
+                    {% for good in market_goods %}
+                    {% if good.index <= 5 %}
+                    {% if good.status == 1 %}
+                    <td>
+                        <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                            <div class="flipper">
+                                <div class="front">
+                                    <!-- 前面内容 -->
+                                    <div class="pricetag">
+                                        <div class="pricetag price"
+                                             style="background:#000;filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6">
+                                            ${{ good.price|kmgnumber }}
+                                        </div>
+                                        <img src="{% static good.image_url %}" alt="{% static 'traderlife/img/default.png' %}"
+                                             class="img-rounded"
+                                             width="90" height="90">
+                                    </div>
+                                </div>
+                                <div class="back">
+                                    <!-- 背面内容 -->
+                                    <!--<form method="post">-->
+                                    <input type="hidden" name="good_name" value="{{ good.name }}"
+                                           class="goodname">
+                                    <div>{{ good.name }}</div>
+                                    <input type="hidden" name="good_price" value="{{ good.price }}" class="price">
+                                    <input name="count" type="number" min="1" max="99999" class="form-control"
+                                           placeholder="数量">
+
+                                    <button class="add2order_btn">加入订单</button>
+                                    {% csrf_token %}
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    {% elif good.status == 0 %}
+                    <td>
+                        <div class="goodname"></div>
+                        <img src="{% static 'traderlife/img/default.png' %}" alt="{% static 'traderlife/img/default.png' %}"
+                             class="img-rounded"
+                             width="90" height="90">
+                    </td>
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                </tr>
+                <!--第二排-->
+                <tr>
+                    {% for good in market_goods %}
+                    {% if good.index <= 10 %}
+                    {% if good.index > 5 %}
+                    {% if good.status == 1 %}
+                    <td>
+                        <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                            <div class="flipper">
+                                <div class="front">
+                                    <!-- 前面内容 -->
+                                    <div class="pricetag">
+                                        <div class="pricetag price"
+                                             style="background:#000;filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6">
+                                            ${{ good.price|kmgnumber }}
+                                        </div>
+                                        <img src="{% static good.image_url %}" alt="{% static 'traderlife/img/default.png' %}"
+                                             class="img-rounded"
+                                             width="90" height="90">
+                                    </div>
+                                </div>
+                                <div class="back">
+                                    <!-- 背面内容 -->
+                                    <!--<form method="post">-->
+                                    <input type="hidden" name="good_name" value="{{ good.name }}"
+                                           class="goodname">
+                                    <div>{{ good.name }}</div>
+                                    <input type="hidden" name="good_price" value="{{ good.price }}" class="price">
+                                    <input name="count" type="number" min="1" max="99999" class="form-control"
+                                           placeholder="数量">
+
+                                    <button class="add2order_btn">加入订单</button>
+                                    {% csrf_token %}
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    {% elif good.status == 0 %}
+                    <td>
+                        <div class="goodname"></div>
+                        <img src="{% static 'traderlife/img/default.png' %}" alt="{% static 'traderlife/img/default.png' %}"
+                             class="img-rounded"
+                             width="90" height="90">
+                    </td>
+                    {% endif %}
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                </tr>
+                <!--第三排-->
+                <tr>
+                    {% for good in market_goods %}
+                    {% if good.index <= 15 %}
+                    {% if good.index > 10 %}
+                    {% if good.status == 1 %}
+                    <td>
+                        <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                            <div class="flipper">
+                                <div class="front">
+                                    <!-- 前面内容 -->
+                                    <div class="pricetag">
+                                        <div class="pricetag price"
+                                             style="background:#000;filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6">
+                                            ${{ good.price|kmgnumber }}
+                                        </div>
+                                        <img src="{% static good.image_url %}" alt="{% static 'traderlife/img/default.png' %}"
+                                             class="img-rounded"
+                                             width="90" height="90">
+                                    </div>
+                                </div>
+                                <div class="back">
+                                    <!-- 背面内容 -->
+                                    <!--<form method="post">-->
+                                    <input type="hidden" name="good_name" value="{{ good.name }}"
+                                           class="goodname">
+                                    <div>{{ good.name }}</div>
+                                    <input type="hidden" name="good_price" value="{{ good.price }}" class="price">
+                                    <input name="count" type="number" min="1" max="99999" class="form-control"
+                                           placeholder="数量">
+
+                                    <button class="add2order_btn">加入订单</button>
+                                    {% csrf_token %}
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    {% elif good.status == 0 %}
+                    <td>
+                        <div class="goodname"></div>
+                        <img src="{% static 'traderlife/img/default.png' %}" alt="{% static 'traderlife/img/default.png' %}"
+                             class="img-rounded"
+                             width="90" height="90">
+                    </td>
+                    {% endif %}
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-md-6">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>名称</th>
+                    <th>数量</th>
+                    <th>金额</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody class="order_list">
+                </tbody>
+                <!--这里用tr 加行， td加元素-->
+            </table>
+
+            <div>
+                <span>总金额：</span>
+                <span id="order_total">$0</span>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<div class="container">
+    <div class="col-md-6"><h2>你的仓库</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>名称</th>
+                <th>数量</th>
+                <th>价值</th>
+                <th>操作</th>
+            </tr>
+            <tbody id="warehouse_list">
+            </tbody>
+            </thead>
+        </table>
+    </div>
+
+    <nav class="navbar navbar-inverse navbar-fixed-bottom" style="height: 70px">
+        <div class="container">
+
+            <div style="float: left; margin-right: 10px; margin-top: 15px;color: #dddddd">
+                <div style=" float:left; ">
+                    <h4 style="float: left">现金：</h4>
+                    <h4 id="totalCash" style="float: left"></h4>
+                </div>
+                <div style=" float:left; padding-left: 100px ">
+                    <h4 style="float: left">结算：</h4>
+                    <h4 id="balance" style="float: left"></h4>
+                </div>
+            </div>
+
+            <div style="float: right; margin-right: 10px; margin-top:16px">
+                <div style="float: right">
+                    <button id="submit_order" class="btn btn-primary "
+                            style="margin-right: 10px;">提交订单
+                    </button>
+                </div>
+                <div style="float: right; margin-right: 20px">
+                    <button class="btn btn-success " id="next_turn">下一回合</button>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+</div>
+</div>
+
+
+<div class="phone-toggle" style="position: fixed; top: 50%; right: 0px">
+    <div class="notice">1</div>
+    <div><img width="80px" src="{% static 'traderlife/img/myPhone2.png' %}" alt="展开我的电话"></div>
+</div>
+
+<div id="panel" class="show-phone blackboard" style="">
+    <div style="position: relative; top: 50%;left: 0px; color: #dddddd">
+        <div class="phone-toggle"><img src="{% static 'traderlife/img/closeMyPhone.PNG' %}" alt="收起我的电话"></div>
+    </div>
+</div>
+
+<div class="phone show-phone" style="float: right; position: absolute;  right: -600px;top: 90px;margin-bottom: 100px;margin-right: 100px ">
+    <div style="width: 320px;height:568px;overflow: hidden">
+        <img src="{% static 'traderlife/img/myphone/statusbar.png' %}" style=" width: 320px;height: 20px;position: absolute;">
+        <iframe src="myphone/homepage.html" style="border: 0px; width: 342px;"></iframe>
+    </div>
+</div>
+
+
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

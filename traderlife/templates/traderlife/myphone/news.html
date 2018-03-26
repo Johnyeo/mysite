@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <title>welcome to tradecenter</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.js"></script>
+    <script src="{% static 'traderlife/js/myphone.js' %}"></script>
+    <link href="{% static 'traderlife/css/myphone.css' %}" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!--{% load bootstrap3 %}-->
+    <!--{% bootstrap_css %}-->
+    <!--{% bootstrap_javascript %}-->
+    {% load kmgformat %}
+
+    <!--<script>-->
+    <!--$.ajaxSetup({-->
+    <!--data: {csrfmiddlewaretoken: '{{ csrf_token }}'},-->
+    <!--});-->
+    <!--</script>-->
+
+</head>
+<body role='document'>
+<div style="vertical-align: middle; width: 100%;background-color:#222;">
+    <a style="margin: 5px; vertical-align: middle;" href="/traderlife/myphone/homepage">
+        <img style="margin: 5px" src="{% static 'traderlife/img/myphone/backward_bt.PNG' %}"></a>
+    <div style="vertical-align: middle;margin: 5px;padding-top: 5px; display: inline-block; font-size: 20px; color: #ddd; ">靠谱的新闻</div>
+</div>
+
+<div class="alert alert-warning alert-dismissible navbar-fixed-top" role="alert"
+     style="margin-top: 51px;display: none;" id="warnMessage">
+    <button type="button" class="close" aria-label="Close"><span
+            aria-hidden="true" id="warnMessage_close">&times;</span></button>
+    <p id="message_content"></p>
+</div>
+
+<div class="message_menu">
+    {% if newslist %}
+        {% for news in newslist %}
+            <a class="message_item" href="{{ news.detail_url }}">
+                <div class="message_from"><img src="{{ news.img_url }}"></div>
+                <div class="message_from">{{ news.title }}</div>
+                <div class="news_date">{{ news.date }}</div>
+                <div class="news_title">{{ news.content }}</div>
+            </a>
+        {% endfor %}
+    {% elif not newslist %}
+        <div class="no_data"><h1>没有数据</h1></div>
+    {% endif %}
+</div>
+
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

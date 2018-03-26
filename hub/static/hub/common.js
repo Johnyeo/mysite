@@ -80,7 +80,7 @@ $(document).ready(function () {
             prefix = '#prod_updatephone ';
         }
         else{
-            console.error('argument error: env has to be prod, or test')
+            console.error('argument error: env has to be prod, or ssdd')
         }
         var org_phone = $(prefix+".org_phone").val();
         var new_phone = $(prefix+".new_phone").val();
